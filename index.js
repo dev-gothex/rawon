@@ -1,3 +1,6 @@
+import http from "node:http";
+http.createServer((_, res) => res.end("ok"))
+    .listen(process.env.PORT || 3000);
 import { execSync } from "node:child_process";
 import { existsSync, rmSync } from "node:fs";
 import nodePath from "node:path";
