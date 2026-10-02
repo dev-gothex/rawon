@@ -1,12 +1,12 @@
-import http from "node:http";
-http.createServer((_, res) => res.end("ok"))
-    .listen(process.env.PORT || 3000);
 import { execSync } from "node:child_process";
 import { existsSync, rmSync } from "node:fs";
+import http from "node:http";
 import nodePath from "node:path";
 import process from "node:process";
 import prism from "prism-media";
 import { downloadExecutable } from "./src/utils/yt-dlp/index.js";
+
+http.createServer((_, res) => res.end("ok")).listen(process.env.PORT || 3000);
 
 const ensureEnv = (arr) => arr.every((x) => process.env[x] !== undefined);
 
