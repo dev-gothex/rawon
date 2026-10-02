@@ -1,5 +1,5 @@
 import { execSync } from "node:child_process";
-import { existsSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import http from "node:http";
 import nodePath from "node:path";
 import process from "node:process";
@@ -7,6 +7,10 @@ import prism from "prism-media";
 import { downloadExecutable } from "./src/utils/yt-dlp/index.js";
 
 http.createServer((_, res) => res.end("ok")).listen(process.env.PORT || 3000);
+if (process.env.COOKIES_B64) {
+    mkdirSync("cache", { recursive: true });
+    writeFileSync("cache/cookies.txt", Buffer.from(process.env.COOKIES_B64, "base64"));
+}
 
 const ensureEnv = (arr) => arr.every((x) => process.env[x] !== undefined);
 
