@@ -8,8 +8,8 @@ import { downloadExecutable } from "./src/utils/yt-dlp/index.js";
 
 http.createServer((_, res) => res.end("ok")).listen(process.env.PORT || 3000);
 if (process.env.COOKIES_B64) {
-    mkdirSync("cache", { recursive: true });
-    writeFileSync("cache/cookies.txt", Buffer.from(process.env.COOKIES_B64, "base64"));
+    mkdirSync("cache/cookies", { recursive: true });
+    writeFileSync("cache/cookies/cookies.txt", Buffer.from(process.env.COOKIES_B64, "base64"));
 }
 
 const ensureEnv = (arr) => arr.every((x) => process.env[x] !== undefined);
